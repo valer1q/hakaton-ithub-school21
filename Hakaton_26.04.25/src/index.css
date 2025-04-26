@@ -1,0 +1,97 @@
+.header {
+  display: flex;
+  justify-content: left;
+  background-color: #1d2633;
+  color: white;
+  height: 90px;
+}
+
+.header_logo {
+  display: flex;
+  background-color: #00ffaf;
+  justify-content: center;
+}
+
+.header_nav_two {
+  margin-top: 15px;
+  margin-left: 10px;
+}
+
+.header_nav_one {
+  margin-top: 15px;
+  margin-right: 10px;
+}
+
+.header_h1 {
+  margin-left: 22px;
+  font-weight: 500;
+  font-family: "Noto Sans Display", sans-serif;
+}
+
+.header_button {
+  background-color: #1d2633;
+  color: white;
+  margin-left: 890px;
+  border: none;
+  cursor: pointer;
+}
+
+.sidebar {
+  background-color: #1d2633;
+  width: 110px;
+  height: 100%;
+  padding: 20px;
+  position: absolute;
+  z-index: 10;
+}
+
+.sidebar_ul {
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar_li {
+  list-style: none;
+  background-color: #8191a2;
+  width: auto;
+  border-radius: 7px;
+  margin-bottom: 20px;
+  width: 80px;
+}
+
+.sidebar_a {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  color: #1d2633;
+}
+
+.main_button {
+  margin-top: 20px;
+  margin-left: 200px;
+  display: flex;
+  gap: 95px;
+}
+
+.mantine-NativeSelect-label {
+  font-family: "Noto Sans Display", sans-serif;
+  size: 35px;
+  color: #323842;
+  font-weight: 500;
+}
+
+.mantine-NativeSelect-wrapper {
+  width: 200px;
+}
+
+.mantine-NativeSelect-root {
+  height: 300px;
+}
+
+.mantine-Table-table {
+  margin-left: 150px;
+  margin-right: auto;
+  max-width: 1200px;
+  position: relative;
+  top: -180px;
+}
