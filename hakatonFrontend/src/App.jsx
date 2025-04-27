@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./Header.jsx";
 import Sidebar from "./Sidebar.jsx";
 import Button from "./Button.jsx";
 import Demo from "./Table.jsx";
+import StatisticsPage from "./StatisticsPage.jsx"; 
 import "@mantine/core/styles.css";
 import { createTheme, MantineProvider } from "@mantine/core";
 
@@ -14,15 +16,27 @@ function App() {
 
   return (
     <MantineProvider theme={theme}>
-      <Header />
-      <Sidebar />
-      <Button
-        levelFilter={levelFilter}
-        setLevelFilter={setLevelFilter}
-        skillFilter={skillFilter}
-        setSkillFilter={setSkillFilter}
-      />
-      <Demo levelFilter={levelFilter} skillFilter={skillFilter} />
+      <Router>
+        <Header />
+        <Sidebar />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Button
+                  levelFilter={levelFilter}
+                  setLevelFilter={setLevelFilter}
+                  skillFilter={skillFilter}
+                  setSkillFilter={setSkillFilter}
+                />
+                <Demo levelFilter={levelFilter} skillFilter={skillFilter} />
+              </>
+            }
+          />
+          <Route path="/statistics" element={<StatisticsPage />} />
+        </Routes>
+      </Router>
     </MantineProvider>
   );
 }
