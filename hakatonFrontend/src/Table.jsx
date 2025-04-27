@@ -7,7 +7,7 @@ const getLevel = (points) => {
   return "High";
 };
 
-function SkillsTable({ levelFilter, skillFilter }) {
+function SkillsTable({ levelFilter, skillFilter, initialSkillFilter }) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -33,7 +33,6 @@ function SkillsTable({ levelFilter, skillFilter }) {
 
       const usersData = await response.json();
       
-      // Преобразование данных из API в нужный формат
       const formattedData = usersData.flatMap(user => 
         user.skills?.map(skill => ({
           "User name": user.username,
@@ -95,28 +94,20 @@ function SkillsTable({ levelFilter, skillFilter }) {
   };
 
   const filteredData = data.filter(element => {
-    const matchesSkill = !skillFilter || 
-      element["Skill name"].toLowerCase().includes(skillFilter.toLowerCase());
+    const matchesSkill = !skillFilter && !initialSkillFilter 
+      ? true 
+      : (skillFilter || initialSkillFilter).toLowerCase() === element["Skill name"].toLowerCase();
+    
     const matchesLevel = !levelFilter || 
       getLevel(element["Skill points"]) === levelFilter;
+    
     return matchesSkill && matchesLevel;
   });
 
   if (error) {
     return (
-      <Alert 
-        variant="light" 
-        color="red" 
-        title="Ошибка загрузки"
-        my="md"
-      >
+      <Alert variant="light" color="red" title="Ошибка загрузки" my="md">
         <Text mb="sm">{error}</Text>
-        <Text size="sm" mb="md">
-          Проверьте:
-          <br />• Сервер доступен по адресу http://127.0.0.1:8000
-          <br />• Endpoint /api/users/all возвращает данные
-          <br />• Нет проблем с CORS
-        </Text>
         <Button onClick={handleRetry} size="sm">
           Повторить попытку
         </Button>
