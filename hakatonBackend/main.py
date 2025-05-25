@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException
-from fastapi.middleware.cors import CORSMiddleware  # Импорт middleware для CORS
+from fastapi.middleware.cors import CORSMiddleware  
 from typing import List, Dict
 import json
 from pathlib import Path
@@ -9,7 +9,7 @@ app = FastAPI()
 # Настройка CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Разрешаем все домены (для продакшена укажите конкретные)
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],  # Разрешаем все методы
     allow_headers=["*"],  # Разрешаем все заголовки
